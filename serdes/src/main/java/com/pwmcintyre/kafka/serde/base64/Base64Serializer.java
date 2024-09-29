@@ -22,6 +22,7 @@ public class Base64Serializer<T> implements Serializer<T> {
     @Override
     public void configure(Map<String, ?> configs, boolean isKey) {
         configure(new Base64SerDeConfig(configs), isKey);
+        this.inner.configure(configs, isKey);
     }
 
     @SuppressWarnings("unchecked")

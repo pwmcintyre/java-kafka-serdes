@@ -21,6 +21,7 @@ public class Base64Deserializer<T> implements Deserializer<T> {
     @Override
     public synchronized void configure(Map<String, ?> configs, boolean isKey) {
         configure(new Base64SerDeConfig(configs), isKey);
+        this.inner.configure(configs, isKey);
     }
 
     @SuppressWarnings("unchecked")
