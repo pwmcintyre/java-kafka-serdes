@@ -1,0 +1,29 @@
+# Logging
+logging.level:
+    'root': warn
+    'com.pwmcintyre': debug
+    'org.springframework.cache': DEBUG
+    'org.apache.kafka': warn
+
+# Spring Boot
+spring.main.web-application-type: NONE
+
+# Kafka
+kafka.persons.topic.name: springboot-simple-persons
+
+# Kafka Producer
+spring.kafka.producer:
+    key-serializer: org.apache.kafka.common.serialization.StringSerializer
+    value-serializer: com.pwmcintyre.kafka.serde.base64.Base64Serializer
+    properties:
+        '[base64.inner.serializer]': org.springframework.kafka.support.serializer.JsonSerializer
+
+# Kafka Consumer
+spring.kafka.consumer:
+    group-id: ${random.uuid}
+    key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    value-deserializer: com.pwmcintyre.kafka.serde.base64.Base64Deserializer
+    properties:
+        '[base64.inner.deserializer]': org.springframework.kafka.support.serializer.JsonDeserializer
+        '[spring.json.value.default.type]': com.pwmcintyre.dto.Person
+        '[spring.json.trusted.packages]': com.pwmcintyre.*
