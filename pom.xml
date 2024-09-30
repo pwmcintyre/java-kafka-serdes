@@ -11,6 +11,7 @@
 
     <modules>
         <module>serdes</module>
+        <module>examples/springboot-multiple-topics</module>
         <module>examples/springboot-simple</module>
     </modules>
 
