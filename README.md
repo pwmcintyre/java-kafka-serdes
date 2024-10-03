@@ -15,11 +15,11 @@ graph LR
     end
 
     subgraph Producer
-        Object --> JSONSerializer --> Base64Serializer
+        Object -->|serialize| JSONSerializer -->|encode| Base64Serializer
     end
 
     subgraph Consumer
-        Base64Deserializer --> JSONDeserializer --> Object*
+        Base64Deserializer -->|decode| JSONDeserializer -->|deserialize| Object*
     end
 ```
 
